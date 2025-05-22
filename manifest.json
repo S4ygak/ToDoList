@@ -1,8 +1,8 @@
 {
     "name": "To-Do PWA",
     "short_name": "Todo",
-    "scope": "/ToDoList/",
-    "start_url": "/ToDoList/?source=pwa"
+    "scope": "./",
+    "start_url": "./"
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0078d7",
