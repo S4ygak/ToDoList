@@ -1,24 +1,24 @@
-const CACHE_NAME = 'pwa-kanban-cache-v1';
-const urlsToCache = [
+const CACHE_NAME = 'ultimate-v1';
+const URLS = [
   './',
   './index.html',
   './styles.css',
   './app.js',
   './icon-192x192.png',
-  './icon-512x512.png'
+  './manifest.json'
 ];
-self.addEventListener('install', (event) => {
+
+self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-      .catch(err => console.log('Ошибка кеширования:', err))
+      .then(cache => cache.addAll(URLS))
+      .then(() => self.skipWaiting())
   );
 });
-self.addEventListener('fetch', (event) => {
+
+self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
+      .then(response => response || fetch(event.request))
   );
 });
